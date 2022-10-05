@@ -19,7 +19,7 @@ function makeJSON(text) {
     const [key, val] = stats.split(":").map((s) => s.trim());
     if (key === "Size") {
       if (!obj[i].Sizes) obj[i].Sizes = [];
-      obj[i].Sizes.push([{ [key]: val }]);
+      obj[i].Sizes.push([([key], val)]);
     } else if (key === "Interval") {
       let Intervals = [val];
       let newValue = val.split(" ");
@@ -35,7 +35,7 @@ function makeJSON(text) {
         );
       }
 
-      obj[i].Sizes[obj[i].Sizes.length - 1].push({ Intervals: finalValues });
+      obj[i].Sizes[obj[i].Sizes.length - 1].push(finalValues);
     } else {
       obj[i][key] = val;
     }
